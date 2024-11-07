@@ -27,13 +27,14 @@
                 align-items: center;
                 text-align: center;
                 border: 2px solid #000000;
+                padding: 0px 20px 0px;
             }
         </style>
     </head>
     <body>
         <div id="title">
-            <h1> Random Brewery Generator </h1>
-            <h2> Look down below to see information regarding a random brewery. </h2>
+            <h1 style="font-size: 40px"> Random Brewery Generator </h1>
+            <h2 style="font-size: 24px; font-weight: normal"> Look down below to see information regarding a random brewery. </h2>
         </div>
         <div id="fetchButton"> 
             <button onclick="fetchBrew()" style="font-size: 20px"> Fetch Brewery </button>
@@ -41,14 +42,14 @@
         <div id="display"> </div>
         <script language = "javascript">
             function fetchBrew() {
-                fetch("https://api.openbrewerydb.org/v1/breweries/random")
+                fetch("https://api.openbrewerydb.org/v1/breweries")
                 .then (response => response.json())
                 .then (data => {
-                    display.innerHTML = ""
-                    display.innerHTML = "<p style='font-size: 30px; text-decoration: underline'>" + data[0].name + "</p>";
-                    display.innerHTML += "<p> Address: " + data[0].address_1 + ", " + data[0].city + ", " + data[0].state_province + "</p>";
-                    display.innerHTML += "<p> Country: " + data[0].country + "</p>";
-                    display.innerHTML += "<p> Website: " + data[0].website_url + "</p>";
+                    i = Math.floor(Math.random() * data.length);
+                    display.innerHTML = "<p style='font-size: 30px; text-decoration: underline'>" + data[i].name + "</p>";
+                    display.innerHTML += "<p> Address: " + data[i].address_1 + ", " + data[i].city + ", " + data[i].state_province + "</p>";
+                    display.innerHTML += "<p> Country: " + data[i].country + "</p>";
+                    display.innerHTML += "<p> Website: " + data[i].website_url + "</p>";
                 })
                 .catch (error => console.log(error));
             }
