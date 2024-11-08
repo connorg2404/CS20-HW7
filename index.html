@@ -42,7 +42,7 @@
         <div id="display"> </div>
         <script language = "javascript">
             function fetchBrew() {
-                fetch("https://api.openbrewerydb.org/v1/breweries")
+                fetch("https://api.openbrewerydb.org/v1/breweries/random?size=50")
                 .then (response => response.json())
                 .then (data => {
                     i = Math.floor(Math.random() * data.length);
@@ -54,5 +54,30 @@
                 .catch (error => console.log(error));
             }
         </script>
+        <div id="info">
+            <h2> Answers to Questions </h2>
+            <p> 1. The API I selected is Open Brewery DB. It's a free and open source
+                API that provides public information regarding breweries across
+                the country and the world.
+            </p>
+            <p> 2. The website that I found this API on is Mixed Analytics, which
+                is described in the "Reading AJAX" page on Canvas.
+            </p>
+            <p> 3. The one main parameter that I used is through the option of Random
+                Breweries, where I specified that a list of 50 randomly selected breweries
+                be fetched from the database. From there, I then had a random number generator
+                give a number from 0-49, which would then determine which brewery
+                to show. After that, I determined the important information using the names
+                of the variables, and then displayed them on the page for the user to see.
+            </p>
+            <p> 4. One application this would be useful for is if there is a company
+                looking to display where you can find their product. They can use this
+                API to find the breweries that sell their product, and then display
+                the information. Another application for this API would be for tourists
+                looking to discover the breweries in the city they're visiting. Since you
+                can filter breweries by city, it would be very easy for them to get
+                the information they need.
+            </p>
+        </div>
     </body>
 </html>
